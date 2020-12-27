@@ -1,0 +1,103 @@
+.promo-section-item-link-wrapper {
+    display: block;
+}
+
+.promo-section-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    max-width: 350px;
+    height: 330px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background-color: #ffffff;
+    transition: box-shadow 0.2s ease-in, transform 0.2s ease-in;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 3px 25px rgba(0, 0, 0, 0.219);
+    }
+}
+
+.promo-section-item__title {
+    margin-bottom: 20px;
+    color: #666666;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.promo-section-item__subtitle {
+    margin-bottom: 40px;
+    color: #b3b3b3;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+/* Item with Background image */
+
+.promo-section-item--background-img {
+    justify-content: flex-end;
+    background-color: #3b4b48;
+    background-position: center;
+    background-size: cover;
+    padding-bottom: 45px;
+
+    .promo-section-item__title {
+        color: #fff;
+    }
+
+    .promo-section-item__subtitle {
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.promo-section-item--background-img-watch {
+    background-color: #3b4b48;
+    background-image: url("./../img/promo/watch-bg.jpg");
+}
+
+/* Item small size */
+
+.promo-section-item-link-wrapper--column {
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+}
+
+.promo-section-item--small {
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    height: 150px;
+    text-align: left;
+    .promo-section-item__title {
+        color: #666666;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 2.14;
+        margin: 0;
+    }
+}
+
+.promo-section-item__img-cell {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 116px;
+    height: 100%;
+    margin-right: 25px;
+}
+
+.promo-section-item__title-cell {
+    display: flex;
+    align-items: center;
+}
