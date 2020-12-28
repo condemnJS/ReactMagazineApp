@@ -13,8 +13,7 @@ export const Register = () => {
     })
     const {loading, request, error} = useFetch(form);
     const changeHandler = (event) => {
-        setForm({...form, [event.target.name]: event.target.value})
-        console.log(form)
+        setForm({...form, [event.target.name]: event.target.value}) // Return new object where key it is input name and value it's value input
     }
     const registerHandler = async (event) => {
         event.preventDefault();
@@ -27,8 +26,7 @@ export const Register = () => {
             if(data.code === 201){
                 history.push('/login');
             }
-        } catch (e) {
-        }
+        } catch (e) {}
     }
     return (
         <React.Fragment>
