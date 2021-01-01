@@ -1,9 +1,9 @@
 import {useState, useCallback} from 'react'
 
-export const useFetch = (params)=>{
+export const useFetch = (params = null)=>{
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(params);
-    const request = useCallback(async (url, method = 'GET', body = null, headers = {'Content-Type':'applications/json'}) =>{
+    const request = useCallback(async (url, method = 'GET', body = undefined, headers = {'Content-Type':'applications/json'}) =>{
         setLoading(true);
         try{
             const response = await fetch(url, {

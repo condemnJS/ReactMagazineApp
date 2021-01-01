@@ -1,53 +1,60 @@
-:root {
-  --border--color: #f2f2f2;
-  --h--color: #4d4d4d;
-}
-@import "~bootstrap/scss/bootstrap.scss";
+// Fonts - OpenSans
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
 
-// Base
-@import './styles/base/variables';
-@import './styles/base/mixins';
-@import './styles/base/base';
-
-// Blocks
-@import './styles/blocks/header';
-@import './styles/blocks/header-select';
-@import './styles/blocks/header-link';
-@import './styles/blocks/header-nav';
-@import './styles/blocks/header-mega-menu-link';
-@import './styles/blocks/nav-dropdown';
-@import './styles/blocks/carousel';
-@import './styles/blocks/carousel-theme';
-@import './styles/blocks/promo-section';
-@import './styles/blocks/promo-section-item';
-@import './styles/blocks/main';
-@import './styles/blocks/navigation';
-@import './styles/blocks/info-block';
-@import './styles/blocks/tabs';
-@import './styles/blocks/card';
-
-// Forms (Our)
-@import "./styles/form/form";
-
-* {
-  outline: none;
-}
-.invalid {
-  color: red;
-}
-.mt-10 {
-  margin-top: 100px;
-}
-body {
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  margin: 0 220px;
 }
+
+:root {
+  // Colors used
+  --brught-color: #4ECDC4;
+  --black-color: #292F36;
+  --turquoise-color: #F7FFF7;
+  --pink-color: #FF6B6B;
+  --yellow-color: #FFE66D;
+}
+input {outline: none}
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.vh-100 {
+  height: 100vh;
+}
+
+.d-f {
+  display: flex;
+}
+
+.ju-c {
+  justify-content: center;
+}
+
+.ju-sb {
+  justify-content: space-between;
+}
+
+.al-c {
+  align-items: center;
+}
+
+.fl-c {
+  flex-direction: column;
+}
+// Includes
+@import 'assets/styles/main/_advertising';
+@import 'assets/styles/main/_head';
+@import 'assets/styles/main/_menu';
