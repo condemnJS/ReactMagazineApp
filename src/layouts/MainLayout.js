@@ -1,7 +1,7 @@
+import React from 'react';
 import {Header} from '../components/Header'
 
 const MainLayout = (props)=>{
-    console.log(props)
     return (
         <div>
             <Header />

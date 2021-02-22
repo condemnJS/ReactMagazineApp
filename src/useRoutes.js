@@ -1,9 +1,7 @@
-import {Route, Switch, Redirect, Router} from "react-router-dom";
-import {Home} from "./templates/Home";
-import {Register} from "./templates/Register";
-import {Login} from "./templates/Login";
+import {Route, Switch, Redirect} from "react-router-dom";
 import MainLayout from './layouts/MainLayout';
-import SideLayout from './layouts/SideLayout';
+// import SideLayout from './layouts/SideLayout';
+import {Home} from "./pages/Home";
 
 export const useRoutes = (isAuth) => {
     const AppRoute = ({component: Component, layout: Layout, ...rest}) => {
@@ -24,7 +22,7 @@ export const useRoutes = (isAuth) => {
     return (
         <Switch>
             <AppRoute path={'/'} exact component={Home} layout={MainLayout}/>
-            <AppRoute path={'/login'} component={Login} layout={SideLayout}/>
+            {/*<AppRoute path={'/login'} component={Login} layout={SideLayout}/>*/}
             {/*<Redirect to={'/'}/>*/}
         </Switch>
     );

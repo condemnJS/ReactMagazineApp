@@ -1,7 +1,10 @@
+import React, {Fragment} from 'react';
+
 const SideLayout = (props)=>{
-    console.log(props)
     return (
-        <div>sdaasd</div>
+        <Fragment>
+            {props.children}
+        </Fragment>
     );
 }
 export default SideLayout;
