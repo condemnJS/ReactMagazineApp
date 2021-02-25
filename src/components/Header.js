@@ -1,22 +1,65 @@
-import React, {Fragment, useState, useEffect, useCallback} from 'react';
+import React, {Fragment, useState, useEffect, useCallback, useRef, useContext} from 'react';
 import {useFetch} from "../hooks/useFetch";
-
+import {Context} from "../context";
 
 export const Header = () => {
+    const catalogBtn = document.querySelectorAll('.catalogLogo div');
+    const subCategories = document.querySelectorAll('.subcategories');
     const [categories, setCategories] = useState([]);
+    const [subcategories, setSubCategories] = useState([]);
+    const [slug, setSlug] = useState('pokupki');
+    const {toggleLayoutStyles} = useContext(Context);
+    const headerLayoutWrapper = useRef(null);
     const {request} = useFetch();
-    const getCategories = useCallback(async () => {
+    const getCategories = useCallback(async (limit = 10) => {
         try {
             const data = await request(
-                'http://magazine.test/api/categories?limit=7'
+                'http://magazine.test/api/categories?limit=' + limit
             )
             setCategories(data.data);
-        }catch (e) {}
+        } catch (e) {
+        }
     }, [request])
 
+    console.log(subcategories);
+
+    const getSubCategories = useCallback(async () => {
+        try {
+            const data = await request(
+                'http://magazine.test/api/subcategories'
+            )
+            setSubCategories(data);
+        } catch (e) {
+
+        }
+    })
+
     useEffect(() => {
-        getCategories();
-    }, [getCategories])
+        getCategories(7);
+        getSubCategories();
+    }, [])
+
+    const toggleBtnCatalog = () => {
+        catalogBtn[0].classList.toggle('active__catalog_1');
+        catalogBtn[1].classList.toggle('active__catalog_2');
+        catalogBtn[2].classList.toggle('active__catalog_3');
+        toggleLayoutStyles();
+        headerLayoutWrapper.current.classList.toggle('active__layout');
+    }
+
+    const scrollAnimatedChangeData = (event) => {
+        let targetElement = event.target;
+        if (targetElement.href) {
+            targetElement = targetElement.href;
+        } else {
+            targetElement = targetElement.parentElement.href;
+        }
+        const slug = targetElement.split('/')[3]; // Slug
+        setSlug(slug);
+    }
+
+    console.log(slug);
+
 
     return (
         <Fragment>
@@ -30,7 +73,7 @@ export const Header = () => {
                     <div className="header__title">
                         <a href="/"><strong>Татар</strong> Маркет</a>
                     </div>
-                    <div className="header__catalog d-f al-c">
+                    <div className="header__catalog d-f al-c" onClick={toggleBtnCatalog}>
                         <div className="catalogLogo">
                             <div></div>
                             <div></div>
@@ -44,7 +87,8 @@ export const Header = () => {
                     </div>
                     <div className="header__icons d-f al-c">
                         <div className="icon_item d-f fl-c al-c">
-                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas"
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
+                                 data-prefix="fas"
                                  data-icon="gift" className="svg-inline--fa fa-gift fa-w-16" role="img"
                                  viewBox="0 0 512 512">
                                 <path fill="currentColor"
@@ -53,7 +97,8 @@ export const Header = () => {
                             <span>Бонусы</span>
                         </div>
                         <div className="icon_item d-f fl-c al-c">
-                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas"
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
+                                 data-prefix="fas"
                                  data-icon="cube" className="svg-inline--fa fa-cube fa-w-16" role="img"
                                  viewBox="0 0 512 512">
                                 <path fill="currentColor"
@@ -62,7 +107,8 @@ export const Header = () => {
                             <span>Заказы</span>
                         </div>
                         <div className="icon_item d-f fl-c al-c">
-                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="far"
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
+                                 data-prefix="far"
                                  data-icon="heart" className="svg-inline--fa fa-heart fa-w-16" role="img"
                                  viewBox="0 0 512 512">
                                 <path fill="currentColor"
@@ -71,8 +117,10 @@ export const Header = () => {
                             <span>Избранное</span>
                         </div>
                         <div className="icon_item d-f fl-c al-c">
-                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas"
-                                 data-icon="shopping-cart" className="svg-inline--fa fa-shopping-cart fa-w-18" role="img"
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
+                                 data-prefix="fas"
+                                 data-icon="shopping-cart" className="svg-inline--fa fa-shopping-cart fa-w-18"
+                                 role="img"
                                  viewBox="0 0 576 512">
                                 <path fill="currentColor"
                                       d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"/>
@@ -82,6 +130,66 @@ export const Header = () => {
                     </div>
                     <div className="header__button d-f al-c">
                         <a href="#">Войти</a>
+                    </div>
+                </div>
+            </div>
+            <div className={'header__layoutWrapper'} ref={headerLayoutWrapper}>
+                <div className="container h-100 d-f">
+                    <div className="wrap__categories">
+                        {categories.map(item => {
+                            return (
+                                <a className={`item_category d-f al-c${item.slug === slug ? ' active__category' : ''}`}
+                                   href={item.slug} key={item.id}
+                                   onMouseMove={(event) => scrollAnimatedChangeData(event)}>
+                                    <img src={"../../img/icons/categories/" + item.icon} alt="icon"/>
+                                    <span>{item.title}</span>
+                                </a>
+                            );
+                        })}
+                    </div>
+                    <div className="wrap__subcategories">
+                        {subcategories.map((item) => {
+                            if (item.slug === slug) {
+                                let subs = [];
+                                let $elms = [];
+                                let delimetr = Math.ceil(item.subcategories.length / 3);
+                                item.subcategories.forEach(el => {
+                                    $elms.push(el);
+                                    if (el.id % delimetr === 0) {
+                                        subs.push($elms);
+                                        $elms = [];
+                                    }
+                                })
+                                console.log(subs);
+                                return (
+                                    <div key={item.id}>
+                                        <a href={'#'} className={'category___title'}>{item.title}</a>
+                                        <div className={'subcategories d-f ju-sb'}>
+                                            {subs.map((sub, key) => {
+                                                return (
+                                                    <div className={'sub__block'} key={key}>
+                                                        {sub.map(cat => {
+                                                            return (
+                                                                <div className="subcategories__item mb-3" key={cat.id}>
+                                                                    <a className="sub__title" href={'#'}>{cat.title}</a>
+                                                                    <div className="sub__items d-f fl-c">
+                                                                        {cat.subsubcategory.map(subsub => {
+                                                                            return (
+                                                                                <a href="#" key={subsub.id}>{subsub.title}</a>
+                                                                            );
+                                                                        })}
+                                                                    </div>
+                                                                </div>
+                                                            );
+                                                        })}
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                );
+                            }
+                        })}
                     </div>
                 </div>
             </div>
