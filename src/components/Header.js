@@ -21,7 +21,6 @@ export const Header = () => {
         }
     }, [request])
 
-    console.log(subcategories);
 
     const getSubCategories = useCallback(async () => {
         try {
@@ -57,9 +56,6 @@ export const Header = () => {
         const slug = targetElement.split('/')[3]; // Slug
         setSlug(slug);
     }
-
-    console.log(slug);
-
 
     return (
         <Fragment>
@@ -160,10 +156,9 @@ export const Header = () => {
                                         $elms = [];
                                     }
                                 })
-                                console.log(subs);
                                 return (
                                     <div key={item.id}>
-                                        <a href={'#'} className={'category___title'}>{item.title}</a>
+                                        <a href={item.slug} className={'category___title'}>{item.title}</a>
                                         <div className={'subcategories d-f ju-sb'}>
                                             {subs.map((sub, key) => {
                                                 return (
@@ -171,11 +166,11 @@ export const Header = () => {
                                                         {sub.map(cat => {
                                                             return (
                                                                 <div className="subcategories__item mb-3" key={cat.id}>
-                                                                    <a className="sub__title" href={'#'}>{cat.title}</a>
+                                                                    <a className="sub__title" href={cat.slug}>{cat.title}</a>
                                                                     <div className="sub__items d-f fl-c">
                                                                         {cat.subsubcategory.map(subsub => {
                                                                             return (
-                                                                                <a href="#" key={subsub.id}>{subsub.title}</a>
+                                                                                <a href={subsub.slug} key={subsub.id}>{subsub.title}</a>
                                                                             );
                                                                         })}
                                                                     </div>
