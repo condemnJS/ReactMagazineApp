@@ -6,9 +6,12 @@ import React, {useRef} from 'react';
 function App() {
     const routes = useRoutes(false)
 
-    const main = useRef(null);
+    const mainWrapper = useRef<HTMLInputElement>(null);
     const toggleLayoutStyles = () => {
-        main.current.classList.toggle('layoutColor');
+        if(mainWrapper && mainWrapper.current) {
+            mainWrapper.current.classList.toggle('layoutColor');
+        }
+        console.log(mainWrapper.current)
     }
 
     return (
@@ -16,7 +19,7 @@ function App() {
             toggleLayoutStyles
         }}>
             <BrowserRouter>
-                <div className="main" ref={main}>
+                <div className="main" ref={mainWrapper}>
                     {routes}
                 </div>
             </BrowserRouter>

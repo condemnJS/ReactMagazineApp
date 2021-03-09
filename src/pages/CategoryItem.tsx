@@ -1,7 +1,7 @@
-import React, {useCallback, useState, useEffect} from 'react';
+import {useCallback, useState, useEffect} from 'react';
 import {useFetch} from "../hooks/useFetch";
 
-export const CategoryItem = (props) => {
+export const CategoryItem = (props: any) => {
     const [categories, setCategories] = useState([]);
     const locationHref = props.match.params.slug // Наш текущий slug в url, с помощью его будем делать запроос на серверc
     const {request} = useFetch();
