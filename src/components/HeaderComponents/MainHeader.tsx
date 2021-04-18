@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface MainHeaderPropsI {
     click: () => void
@@ -66,9 +67,13 @@ export const MainHeader: React.FC<MainHeaderPropsI> = ({click}) => {
                         <span>Корзина</span>
                     </div>
                 </div>
-                <div className="header__button d-f al-c">
-                    <a href="#">Войти</a>
-                </div>
+                {localStorage.getItem('token')
+                 ? <img className="icon_user" src="../../img/user.png" alt=""/>
+                 : 
+                 <div className="header__button d-f al-c">
+                    <Link to="/login">Войти</Link>
+                 </div>
+                }
             </div>
         </div>
     );

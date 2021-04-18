@@ -1,0 +1,30 @@
+.category__title {
+  font-size: 40px;
+  color: var(--black-color);
+  margin-top: 30px;
+  font-weight: 600;
+}
+.category__content {
+  margin-top: 30px;
+}
+.subcategories__wrapper {
+  max-width: 228px;
+  font-size: 16px;
+}
+.subcategories__element {
+  margin-bottom: 30px;
+}
+.subcategories__title {
+  a {
+    color: var(--black-color);
+  }
+}
+.subsubcategories__wrapper {
+  margin-top: 10px;
+}
+.subsubcategories__element {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  color: var(--nine-grey-color);
+}

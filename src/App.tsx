@@ -1,10 +1,11 @@
 import {BrowserRouter} from "react-router-dom";
 import {useRoutes} from './useRoutes';
 import {Context} from "./context";
-import React, {useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
+import {Listner} from "./components/Listner";
 
 function App() {
-    const routes = useRoutes(false)
+    const routes = useRoutes(true)
 
     const mainWrapper = useRef<HTMLInputElement>(null);
     const toggleLayoutStyles = () => {
@@ -19,9 +20,11 @@ function App() {
             toggleLayoutStyles
         }}>
             <BrowserRouter>
-                <div className="main" ref={mainWrapper}>
-                    {routes}
-                </div>
+                <Listner>
+                    <div className="main" ref={mainWrapper}>
+                        {routes}
+                    </div>
+                </Listner>
             </BrowserRouter>
         </Context.Provider>
     );

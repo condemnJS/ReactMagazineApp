@@ -1,0 +1,53 @@
+.sidebar__wrapper {
+    width: 400px;
+    height: 100vh;
+    position: static;
+    background-color: var(--black-color);
+    flex-direction: column;
+    display: flex;
+}
+.sidebar__logo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+    img {
+        width: 70px;
+        margin-top: 20px;
+    }
+    h2 {
+        color: #fff;
+        margin-top: 20px;
+    }
+}
+.sidebar__dropBtn {
+    padding: 15px 15px;
+    border-bottom: 1px solid #fff;
+    span {
+        color: #fff;
+        font-weight: 800;
+    }
+}
+.sidebar__element {
+    height: 53px;
+    transition: height 0.15s ease-out;
+    overflow: hidden;
+    cursor: pointer;
+    // &:hover {
+    //     background: #34495e;
+    // }
+}
+
+.dropWrapper {
+    li {
+        padding: 10px 30px;
+        color: #fff;
+    }
+    li a{
+        color: #fff;
+    }
+}
+.dropDown {
+    height: auto;
+    transition: max-height 0.25s ease-in;
+}

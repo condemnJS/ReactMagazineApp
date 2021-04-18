@@ -23,10 +23,11 @@ const Header = () => {
     }, []);
 
     const toggleBtnCatalog = () => {
-        console.log('fired')
-        catalogBtn[0].classList.toggle('active__catalog_1');
-        catalogBtn[1].classList.toggle('active__catalog_2');
-        catalogBtn[2].classList.toggle('active__catalog_3');
+        if(catalogBtn) {
+            catalogBtn[0].classList.toggle('active__catalog_1');
+            catalogBtn[1].classList.toggle('active__catalog_2');
+            catalogBtn[2].classList.toggle('active__catalog_3');
+        }
         toggleLayoutStyles();
         if (headerLayoutWrapper && headerLayoutWrapper.current) {
             headerLayoutWrapper.current.classList.toggle('active__layout');

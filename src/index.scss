@@ -25,6 +25,7 @@
   --turquoise-color: #F7FFF7;
   --pink-color: #FF6B6B;
   --yellow-color: #FFE66D;
+  --nine-grey-color: #999;
 }
 a {text-decoration: none}
 input {outline: none}
@@ -77,6 +78,9 @@ input {outline: none}
 .mr-1 {
   margin-right: 10px;
 }
+.mb-2 {
+  margin-bottom: 20px;
+}
 .m-0-auto {
   margin: 0 auto;
 }
@@ -85,7 +89,12 @@ input {outline: none}
 }
 //// Includes
 @import "assets/styles/main/header/header.scss";
-
+@import "assets/styles/main/categories/category.scss";
+@import "assets/styles/main/categories/categoryCard.scss";
+@import "assets/styles/main/auth/login.scss";
+@import "assets/styles/main/auth/register.scss";
+@import "assets/styles/main/admin/sidebar.scss";
+@import "assets/styles/main/admin/main.scss";
 
 @media (max-width: 950px) {
   .container {
