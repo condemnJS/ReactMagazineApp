@@ -9,6 +9,9 @@ import { categoryCreateWatcher } from './categoryCreateSaga';
 import { subCategoryCreateWatcher } from './subCategoryCreateSaga';
 import { subsCategoriesWatcher } from './subsCategoriesSaga';
 import { subSubCategoryCreateWatcher } from './subSubCategoryCreateSaga';
+import { subsSubsCategoriesWatcher } from './subSubCategoriesSaga';
+import { getBySlugSunCategoriesWatcher } from './getBySlugSubCategories';
+import { createOrderWatcher } from './createOrderSaga';
 
 export function* rootWatcher() {
     yield all([
@@ -20,6 +23,9 @@ export function* rootWatcher() {
         registerWatcher(),
         categoryCreateWatcher(),
         subCategoryCreateWatcher(),
-        subSubCategoryCreateWatcher()
+        subSubCategoryCreateWatcher(),
+        subsSubsCategoriesWatcher(),
+        getBySlugSunCategoriesWatcher(),
+        createOrderWatcher()
     ]);
 }

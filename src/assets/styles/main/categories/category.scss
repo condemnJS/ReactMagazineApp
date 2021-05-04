@@ -28,3 +28,11 @@
   margin-bottom: 5px;
   color: var(--nine-grey-color);
 }
+.subsubcategories_wrapper_cards {
+  margin-left: 80px;
+  > h2 {
+    font-size: 30px;
+    color: var(--black-color);
+    margin-bottom: 20px;
+  }
+}

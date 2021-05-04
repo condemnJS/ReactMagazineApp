@@ -20,14 +20,14 @@ export const RegisterPage:React.FC = () => {
 
     const register = async (event: MouseEvent) => {
         event.preventDefault();
+        dispatch({type: CLEAN_ERRORS});
         dispatch({type: REGISTER_USER_FETCH, params: user});
         let promise = new Promise((resolve) => {
             setTimeout(() => {
                 resolve(user_id)
             }, 800);
         }).then(res => {
-            if(user_id) {
-                dispatch({type: CLEAN_ERRORS});
+            if(Object.keys(errors).length === 0) {
                 history.push('/login');
             }
         })

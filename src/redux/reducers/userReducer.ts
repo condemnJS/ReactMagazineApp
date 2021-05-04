@@ -29,7 +29,11 @@ interface errorsBodyProps {
     password_confirmation?: string,
     title?: string,
     image?: string,
-    category_id?: string
+    category_id?: string,
+    description?: string,
+    price?: string,
+    images?: string,
+    subsubcategory_id?: string
 }
 
 const initialState: initStateI = {

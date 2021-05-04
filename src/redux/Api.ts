@@ -24,6 +24,15 @@ export async function requestGetSubsCategories() {
     })
 }
 
+// Получить все подподкатегории
+
+export async function requestGetSubsSubsCategories() {
+    return axios.request({
+        method: 'get',
+        url: APP_API_URL + '/subsubcategories'
+    })
+}
+
 // Получить все категории с их подкатегориями и подподкатегориями
 export async function requestGetSubCategories() {
     return axios.request({
@@ -105,6 +114,25 @@ export async function requestSubSubCategoryCreate(data: any) {
         headers: {
             "Authorization": 'Bearer ' + Store.get('token'),
             'Content-Type': 'multipart/form-data'
+        },
+        data
+    })
+}
+
+// Получить подкатегории по слагу категории
+export async function requestGetSubCategoryBySlug (slug: string) {
+    return axios.request({
+        method: 'get',
+        url: APP_API_URL + `/categories/` + slug + '/subcategories'
+    })
+}
+
+export async function requestCreateOrder(data: any) {
+    return axios.request({
+        method: 'post',
+        url: APP_API_URL + '/order/create',
+        headers: {
+            "Authorization": 'Bearer ' + Store.get('token'),
         },
         data
     })

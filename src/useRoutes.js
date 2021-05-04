@@ -13,6 +13,7 @@ import {CreateSubSubCategory} from "./pages/CreateSubSubCategory";
 import { AllCategories } from "./pages/AllCategories";
 import { AllSubCategories } from "./pages/AllSubCategories";
 import { AllSubSubCategories } from "./pages/AllSubSubCategories";
+import {CreateOrder} from "./pages/CreateOrder";
 
 
 export const useRoutes = (isAuth) => {
@@ -39,6 +40,7 @@ export const useRoutes = (isAuth) => {
         return (
             <Switch>
                 <AppRoute path={'/'} exact component={Home} layout={MainLayout}/>
+                <PrivateRouter path={'/admin/order/create'} component={CreateOrder} role={'admin'} layout={AdminLayout}/>
                 <PrivateRouter path={'/admin/category/create'} component={CreateCategory} role={'admin'} layout={AdminLayout}/>
                 <PrivateRouter path={'/admin/subcategory/create'} component={CreateSubCategory} role={'admin'} layout={AdminLayout}/>
                 <PrivateRouter path={'/admin/subsubcategory/create'} component={CreateSubSubCategory} role={'admin'} layout={AdminLayout}/>

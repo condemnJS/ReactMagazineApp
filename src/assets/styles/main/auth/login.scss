@@ -29,7 +29,8 @@
     margin-bottom: 20px;
     width: 80%;
 }
-.inputComponent input {
+
+.inputComponent input, .inputComponent textarea {
     border: 2px solid #f1f2f6;
     padding: 9px 18px;
     border-radius: 7px;

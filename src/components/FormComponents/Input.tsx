@@ -8,10 +8,11 @@ interface Props {
     name: string,
     error?: string,
     setState?: any,
-    inputStyle?: string
+    inputStyle?: string,
+    multiple?: boolean
 }
 
-export const Input: React.FC<Props> = ({label, type, placeholder = '', error, setState, name, labelStyle, inputStyle}) => {
+export const Input: React.FC<Props> = ({label, type, placeholder = '', error, setState, name, labelStyle, inputStyle, multiple}) => {
 
     let setValue = (event: React.ChangeEvent<HTMLInputElement>) => {
         let targetValue: any = event.target.value
@@ -24,7 +25,7 @@ export const Input: React.FC<Props> = ({label, type, placeholder = '', error, se
     return (
         <div className="inputComponent d-f fl-c">
             <label htmlFor="" className={labelStyle}>{label}</label>
-            <input type={type} placeholder={placeholder} onInput={setValue} name={name} className={inputStyle}/>
+            <input multiple={multiple} type={type} placeholder={placeholder} onInput={setValue} name={name} className={inputStyle}/>
             {error && <span className="invalid_feedback">{error}</span>}
         </div>
     );

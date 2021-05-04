@@ -84,6 +84,21 @@ export const SideBar = () => {
                         </nav>
                     </div>
                 </div>
+                <div className={'sidebar__element'} onClick={dropAnimate.bind(null)}>
+                    <div className={'sidebar__dropBtn'}>
+                        <span>Товары</span>
+                    </div>
+                    <div className={'dropWrapper'}>
+                        <nav>
+                            <li>
+                                <NavLink to={'/admin/order/create'} activeClassName="admin__nav__selected">Создать товар</NavLink> 
+                            </li>
+                            {/* <li>
+                                <a href="#">Все пользователи</a>
+                            </li> */}
+                        </nav>
+                    </div>
+                </div>
             </div>
         </div>
     )

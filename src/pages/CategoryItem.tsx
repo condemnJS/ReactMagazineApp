@@ -3,7 +3,7 @@ import {useCallback, useState, useEffect} from 'react';
 import {useFetch} from "../hooks/useFetch";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import {useDispatch} from "react-redux";
-import {FETCH_GET_CATEGORY, GET_CATEGORY} from "../redux/types";
+import {FETCH_GET_CATEGORY, FETCH_GET_SUBCATEGORIES_BY_SLUG, GET_CATEGORY, GET_SUBS_CATEGORIES} from "../redux/types";
 import {BaseCategoryPropsI} from "../redux/types";
 import {CategoryCard} from "../components/CategoryCard";
 
@@ -16,12 +16,20 @@ interface categoryItemPropsI extends BaseCategoryPropsI{
     subCategories: Array<subcategoryItemPropsI>,
 }
 interface CategoryItemI {
-    category: categoryItemPropsI
+    category: categoryItemPropsI,
+    location: string
 }
 
 
 
-const SubCategoryItemComponent: React.FC<CategoryItemI> = ({category}) => {
+const SubCategoryItemComponent: React.FC<CategoryItemI> = ({category, location}) => {
+    const dispatch = useDispatch();
+    const {subscategories} = useTypedSelector(state => state.subscategories);
+
+    useEffect(() => {
+        dispatch({type: FETCH_GET_SUBCATEGORIES_BY_SLUG, slug: location});
+    }, []);
+    console.log(subscategories);
     return (
         <div>
             <h1 className={'category__title'}>{category.title}</h1>
@@ -43,7 +51,10 @@ const SubCategoryItemComponent: React.FC<CategoryItemI> = ({category}) => {
                     })}
                 </div>
                 <div className="subsubcategories_wrapper_cards">
-                    <CategoryCard />
+                    <h2>Покупайте товары на ТатарМаркете</h2>
+                    {subscategories.map((item, key) => {
+                        return <CategoryCard el={item} key={key}/>
+                    })}
                 </div>
             </div>
         </div>
@@ -83,7 +94,7 @@ export const CategoryItem: React.FC = (props: any) => {
         <div style={{zIndex: -1}}>
             <div className="container">
                 {category.subCategories
-                    ? <SubCategoryItemComponent category={category}/>
+                    ? <SubCategoryItemComponent category={category} location={locationHref}/>
                     : category.subsubcategory
                     ? <SubSubCategoryItemComponent />
                     : category.slug

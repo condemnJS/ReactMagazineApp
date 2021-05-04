@@ -14,6 +14,10 @@ export const FETCH_GET_CATEGORY = "FETCH_GET_CATEGORY";
 export const GET_SUBS_CATEGORIES = "GET_SUBS_CATEGORIES";
 export const FETCH_GET_SUBS_CATEGORIES = "FETCH_GET_SUBS_CATEGORIES";
 
+// Получить только подподкатегории
+export const GET_SUB_SUBS_CATEGORIES = "GET_SUB_SUBS_CATEGORIES";
+export const FETCH_GET_SUB_SUBS_CATEGORIES = "FETCH_GET_SUB_SUBS_CATEGORIES";
+
 export const AUTH_USER = "AUTH_USER";
 export const FETCH_AUTH_USER = "FETCH_AUTH_USER";
 
@@ -43,6 +47,15 @@ export const SUBSUBCATEGORY_CREATE = "SUBSUBCATEGORY_CREATE"
 export const SUBSUBCATEGORY_CREATE_FETCH = "SUBSUBCATEGORY_CREATE_FETCH"
 export const CLEAN_SUBSUBCATEGORY = "CLEAN_SUBSUBCATEGORY"
 
+// Получить подкатегории по слагу категории
+export const GET_SUBCATEGORIES_BY_SLUG = "GET_SUBCATEGORIES_BY_SLUG"
+export const FETCH_GET_SUBCATEGORIES_BY_SLUG = "FETCH_GET_SUBCATEGORIES_BY_SLUG"
+
+// Создать товар 
+export const CREATE_ORDER = "CREATE_ORDER";
+export const FETCH_CREATE_ORDER = "FETCH_CREATE_ORDER";
+export const CLEAN_ORDER = "CLEAN_ORDER"
+
 
 export interface BaseCategoryPropsI {
     slug: string,
@@ -58,4 +71,9 @@ export interface errorsBody {
 export interface is_created {
     code: 201,
     message: string
+}
+
+export interface DataProps {
+    params: any,
+    type: string
 }

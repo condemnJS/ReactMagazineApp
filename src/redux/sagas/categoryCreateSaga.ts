@@ -1,11 +1,7 @@
 import {put, call, takeEvery} from 'redux-saga/effects'
-import {CATEGORY_CREATE, CATEGORY_CREATE_FETCH, SET_ERRORS} from "../types";
+import {CATEGORY_CREATE, CATEGORY_CREATE_FETCH, SET_ERRORS, DataProps} from "../types";
 import {requestCategoryCreate} from "../Api";
 
-interface DataProps {
-    type: string,
-    params: any
-}
 
 function* categoryCreateWorker({params}: DataProps): Generator {
     try {
