@@ -56,6 +56,9 @@ export const CREATE_ORDER = "CREATE_ORDER";
 export const FETCH_CREATE_ORDER = "FETCH_CREATE_ORDER";
 export const CLEAN_ORDER = "CLEAN_ORDER"
 
+// Получить товары с категориями
+export const GET_ORDERS_WTIH_SUBSUBCATEGORIES_BY_SLUG = "GET_ORDERS_WTIH_SUBSUBCATEGORIES_BY_SLUG"
+export const FETCH_GET_ORDERS_WTIH_SUBSUBCATEGORIES_BY_SLUG = "FETCH_GET_ORDERS_WTIH_SUBSUBCATEGORIES_BY_SLUG"
 
 export interface BaseCategoryPropsI {
     slug: string,

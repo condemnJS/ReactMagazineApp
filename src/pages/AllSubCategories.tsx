@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {useDispatch} from 'react-redux';
-import { CategoryCard } from '../components/CategoryCard';
+import CategoryCard from '../components/CategoryCard';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import {FETCH_GET_SUBS_CATEGORIES} from "../redux/types";
 

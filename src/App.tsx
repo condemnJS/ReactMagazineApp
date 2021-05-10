@@ -1,8 +1,11 @@
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Router} from "react-router-dom";
+import {createBrowserHistory} from 'history';
 import {useRoutes} from './useRoutes';
 import {Context} from "./context";
 import React, {useRef, useEffect} from 'react';
 import {Listner} from "./components/Listner";
+
+export const customHistory = createBrowserHistory();  //This maintains custom history
 
 function App() {
     const routes = useRoutes(true)
@@ -15,17 +18,18 @@ function App() {
         console.log(mainWrapper.current)
     }
 
+
     return (
         <Context.Provider value={{
             toggleLayoutStyles
         }}>
-            <BrowserRouter>
+            <Router history={customHistory}>
                 <Listner>
                     <div className="main" ref={mainWrapper}>
                         {routes}
                     </div>
                 </Listner>
-            </BrowserRouter>
+            </Router>
         </Context.Provider>
     );
 }

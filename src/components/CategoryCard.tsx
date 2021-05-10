@@ -1,4 +1,4 @@
-import React, { MouseEvent,  } from 'react';
+import React, { MouseEvent, PureComponent,  } from 'react';
 import Drop from "../assets/crud/trash.svg";
 import Edit from "../assets/crud/edit.svg";
 import { useHistory } from 'react-router';
@@ -15,14 +15,15 @@ interface Props {
     el: any
 }
 
-export const CategoryCard: React.FC<Props> = ({el}) => {
+const CategoryCard: React.FC<Props> = ({el}) => {
     const history = useHistory();
     const deleteCurrentElement = () => {
         console.log('deleted');
     }
     console.log(history.location.pathname);
     return (
-        <div className={`category_card${history.location.pathname.includes('admin') ? ' animate_category_card' : ''}`}>
+        
+        <div onClick={() => window.location.href = `/${el.slug}`} className={`category_card${history.location.pathname.includes('admin') ? ' animate_category_card' : ''}`}>
             <img src={el.image} alt=""/>
             {history.location.pathname.includes('admin') ?
                     <div className="d-f fl-c">
@@ -34,3 +35,5 @@ export const CategoryCard: React.FC<Props> = ({el}) => {
         </div>
     );
 }
+
+export default CategoryCard;

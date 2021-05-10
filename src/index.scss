@@ -78,6 +78,7 @@ input {outline: none}
 .mr-1 {
   margin-right: 10px;
 }
+.mr-3 {margin-right:  30px;}
 .mb-2 {
   margin-bottom: 20px;
 }
@@ -95,6 +96,7 @@ input {outline: none}
 @import "assets/styles/main/auth/register.scss";
 @import "assets/styles/main/admin/sidebar.scss";
 @import "assets/styles/main/admin/main.scss";
+@import "assets/styles/main/orders/order.scss";
 
 @media (max-width: 950px) {
   .container {

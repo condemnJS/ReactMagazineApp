@@ -3,9 +3,10 @@ import {useCallback, useState, useEffect} from 'react';
 import {useFetch} from "../hooks/useFetch";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import {useDispatch} from "react-redux";
-import {FETCH_GET_CATEGORY, FETCH_GET_SUBCATEGORIES_BY_SLUG, GET_CATEGORY, GET_SUBS_CATEGORIES} from "../redux/types";
+import {FETCH_GET_CATEGORY, FETCH_GET_ORDERS_WTIH_SUBSUBCATEGORIES_BY_SLUG, FETCH_GET_SUBCATEGORIES_BY_SLUG, GET_CATEGORY, GET_SUBS_CATEGORIES} from "../redux/types";
 import {BaseCategoryPropsI} from "../redux/types";
-import {CategoryCard} from "../components/CategoryCard";
+import CategoryCard from "../components/CategoryCard";
+import { OrdersSlider } from '../components/OrdersComponents/OrdersSlider';
 
 
 interface subcategoryItemPropsI extends BaseCategoryPropsI{
@@ -22,14 +23,16 @@ interface CategoryItemI {
 
 
 
-const SubCategoryItemComponent: React.FC<CategoryItemI> = ({category, location}) => {
+const CategoryItemComponent: React.FC<CategoryItemI> = ({category, location}) => {
     const dispatch = useDispatch();
     const {subscategories} = useTypedSelector(state => state.subscategories);
+    const {orders_categories} = useTypedSelector(state => state.orders_categories) 
 
     useEffect(() => {
         dispatch({type: FETCH_GET_SUBCATEGORIES_BY_SLUG, slug: location});
+        dispatch({type: FETCH_GET_ORDERS_WTIH_SUBSUBCATEGORIES_BY_SLUG, slug: location})
     }, []);
-    console.log(subscategories);
+    console.log(orders_categories);
     return (
         <div>
             <h1 className={'category__title'}>{category.title}</h1>
@@ -50,11 +53,27 @@ const SubCategoryItemComponent: React.FC<CategoryItemI> = ({category, location})
                         );
                     })}
                 </div>
-                <div className="subsubcategories_wrapper_cards">
-                    <h2>Покупайте товары на ТатарМаркете</h2>
-                    {subscategories.map((item, key) => {
-                        return <CategoryCard el={item} key={key}/>
-                    })}
+                <div>
+                    <div className="subsubcategories_wrapper_cards">
+                        <h2>Покупайте товары на ТатарМаркете</h2>
+                        <div className="subsubcategories_cards_items d-f fl-w">
+                            {subscategories.map((item, key) => {
+                                return <CategoryCard el={item} key={key}/>
+                            })}
+                        </div>
+                    </div>
+                    <div className="categories_orders">
+                        {orders_categories.map((item: any, key) => {
+                            return (
+                                <div>
+                                    <h2>{item.title}</h2>
+                                    <div>
+                                        <OrdersSlider orders={item.orders}/> 
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,7 +100,6 @@ export const CategoryItem: React.FC = (props: any) => {
     const locationHref = props.match.params.slug // Наш текущий slug в url, с помощью его будем делать запроос на сервер
     const [categoryCard, setCategoryCard] = useState([]);
     const dispatch = useDispatch();
-    let renderComponent: any;
     const {category} = useTypedSelector(state => state.category);
     useEffect(() => {
         dispatch({type: FETCH_GET_CATEGORY, slug: locationHref});
@@ -94,7 +112,7 @@ export const CategoryItem: React.FC = (props: any) => {
         <div style={{zIndex: -1}}>
             <div className="container">
                 {category.subCategories
-                    ? <SubCategoryItemComponent category={category} location={locationHref}/>
+                    ? <CategoryItemComponent category={category} location={locationHref}/>
                     : category.subsubcategory
                     ? <SubSubCategoryItemComponent />
                     : category.slug

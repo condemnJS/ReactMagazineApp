@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {CategoryCard} from "../components/CategoryCard";
+import CategoryCard from "../components/CategoryCard";
 import {useDispatch} from 'react-redux';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { FETCH_GET_CATEGORIES } from '../redux/types';

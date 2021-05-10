@@ -1,0 +1,60 @@
+.order {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+    z-index: -1;
+}
+.btn-toBasket {
+    background: var(--yellow-color);
+    padding: 8px 10px;
+    text-align: left;
+    width: 100px;
+    border-radius: 5px;
+    color: var(--black-color);
+    margin-top: 30px;
+}
+.categories_orders {
+    margin-left: 80px;
+    margin-top: 50px;
+    > div {
+        margin-top: 50px;
+    }
+    img {
+        width: 150px;
+    }
+}
+.order_title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Многоточие */
+    height: 20px;
+    margin-top: 10px;
+}
+.order_image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
+}
+.order_price {
+    font-size: 18px;
+    font-weight: 600;
+}
+.order-slider-wrapper {
+    position: relative;
+}
+.orders-slider-items {
+    max-width: 1200px;
+    overflow: hidden;
+}
+.slider-arrows {
+    position: absolute;
+    width: 40px !important;
+    box-shadow: 0 3px 5px rgba(0,0,0, .1);
+    border-radius: 30px;
+    padding: 10px;
+    z-index: 9999;
+    top: calc(50% - 30px);
+    left: -20px;
+}

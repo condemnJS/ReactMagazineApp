@@ -137,3 +137,10 @@ export async function requestCreateOrder(data: any) {
         data
     })
 }
+
+export async function requestGetOrdersWithSubSubCategory(slug: string) {
+    return axios.request({
+        method: 'get',
+        url: APP_API_URL + '/order/' + slug
+    })
+}

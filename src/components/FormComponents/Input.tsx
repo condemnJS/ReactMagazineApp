@@ -1,3 +1,4 @@
+import { TargetElement } from '@testing-library/user-event';
 import React from 'react';
 
 interface Props {

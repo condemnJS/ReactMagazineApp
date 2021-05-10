@@ -9,6 +9,7 @@ import subsCategoriesReducer from "./subsCategoriesReducer";
 import subSubCategoryCreateReducer from "./subSubCategoryReducer";
 import subsSubsCategoriesReducer from "./subsSubsCategoriesReducer";
 import createOrderReducer from "./createOrderReducer";
+import ordersReducer from './ordersReducer';
 
 export const RootReducer = combineReducers({
     categories: categoriesReducer,
@@ -22,7 +23,8 @@ export const RootReducer = combineReducers({
     is_created_category: categoryCreateReducer,
     is_created_subcategory: subCategoryCreateReducer,
     is_created_subsubcategory: subSubCategoryCreateReducer,
-    is_created_order: createOrderReducer
+    is_created_order: createOrderReducer,
+    orders_categories: ordersReducer
 })
 
 // Вывод state, с помощью ReturnType, чтобы не приходилсь писать отдельный интерфейс
