@@ -7,6 +7,6 @@ const sagaMiddleware = createSagaMiddleware();
 
 const Store = createStore(RootReducer, applyMiddleware(sagaMiddleware));
 
-sagaMiddleware.run(rootWatcher);
+sagaMiddleware.run(rootWatcher)
 
 export default Store;

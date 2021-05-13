@@ -3,8 +3,6 @@ import {REGISTER_USER_FETCH, CREATE_USER} from '../types';
 import {SET_ERRORS} from "../types";
 import {requestRegister} from "../Api";
 
-
-
 interface DataProps {
     type: string,
     params: any

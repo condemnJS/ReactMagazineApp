@@ -1,4 +1,4 @@
-import {put, call, takeEvery} from 'redux-saga/effects'
+import {put, call, takeEvery, takeLatest} from 'redux-saga/effects'
 import {requestAuth} from "../Api";
 import { FETCH_AUTH_USER, SET_TOKEN} from '../types';
 import {SET_ERRORS} from "../types";
@@ -25,7 +25,7 @@ function* userWorker({params}:DataProps): Generator {
 
 
 export function* userWatcher() {
-    yield takeEvery(FETCH_AUTH_USER, userWorker);
+    yield takeLatest(FETCH_AUTH_USER, userWorker);
 }
 
 

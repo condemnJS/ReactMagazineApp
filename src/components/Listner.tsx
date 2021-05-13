@@ -1,7 +1,14 @@
 import React, {Fragment, useEffect} from 'react';
 import { useHistory } from 'react-router';
 import {useDispatch} from "react-redux";
-import {CLEAN_ERRORS, CLEAN_SUBCATEGORY, CLEAN_CATEGORY, CLEAN_SUBSUBCATEGORY, CLEAN_ORDER} from "../redux/types";
+import {
+    CLEAN_ERRORS,
+    CLEAN_SUBCATEGORY,
+    CLEAN_CATEGORY,
+    CLEAN_SUBSUBCATEGORY,
+    CLEAN_ORDER,
+    CLEAN_USER
+} from "../redux/types";
 
 export const Listner:React.FC = (props) => {
     const history = useHistory();
@@ -13,10 +20,11 @@ export const Listner:React.FC = (props) => {
         dispatch({type: CLEAN_CATEGORY});
         dispatch({type: CLEAN_ORDER});
         dispatch({type: CLEAN_SUBSUBCATEGORY});
+        dispatch({type: CLEAN_USER});
     });
     return (
         <Fragment>
             {props.children}
-        </Fragment>    
+        </Fragment>
     );
 }

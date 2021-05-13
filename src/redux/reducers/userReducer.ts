@@ -1,4 +1,4 @@
-import {SET_ERRORS, CREATE_USER, SET_TOKEN, SAVE_TOKEN, CLEAN_ERRORS, errorsBody} from "../types";
+import {SET_ERRORS, CREATE_USER, SET_TOKEN, SAVE_TOKEN, CLEAN_ERRORS, CLEAN_USER, errorsBody} from "../types";
 import {Store} from "../Store";
 
 interface userToken  {
@@ -44,19 +44,21 @@ const initialState: initStateI = {
 
 const userReducer = (state = initialState, action: userAction): initStateI => {
     switch (action.type) {
-        case SET_ERRORS: 
+        case SET_ERRORS:
             return {...state, errors: action.errors}
-        case CLEAN_ERRORS: 
-            return {...state, errors: {}}    
+        case CLEAN_ERRORS:
+            return {...state, errors: {}}
+        case CLEAN_USER:
+            return {...state, user_id: null}
         case CREATE_USER:
-            return {...state, user_id: action.user_id} 
+            return {...state, user_id: action.user_id}
         case SET_TOKEN:
             Store.set('token', action.token);
             return {...state, token: action.token}
-        case SAVE_TOKEN: 
+        case SAVE_TOKEN:
             if(localStorage.getItem('token')) {
-                return {...state, token: Store.get('token')}  
-            }  
+                return {...state, token: Store.get('token')}
+            }
     }
     return state;
 }
