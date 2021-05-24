@@ -12,15 +12,14 @@ export const AllCategories = () => {
         dispatch({type: FETCH_GET_CATEGORIES});
     }, []);
 
-    console.log(categories);
-
+    console.log(categories)
     return (
         <div className="mainAdmin">
             <div className="admin__head">
                 <h2>Все категории</h2>
             </div>
             <div className="admin__body d-f fl-w allCategories">
-                {categories.map((item, key) => {
+                {categories.map((item, key ) => {
                     return <CategoryCard key={key} el={item}/>
                 })}
             </div>

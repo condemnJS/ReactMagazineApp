@@ -42,11 +42,12 @@
     font-weight: 600;
 }
 .order-slider-wrapper {
+    width: 1200px;
     position: relative;
+    overflow: hidden;
 }
 .orders-slider-items {
     max-width: 1200px;
-    overflow: hidden;
 }
 .slider-arrows {
     position: absolute;
@@ -56,5 +57,10 @@
     padding: 10px;
     z-index: 9999;
     top: calc(50% - 30px);
+}
+.arrow-left {
     left: -20px;
+}
+.arrow-right {
+    right: 0 !important;
 }

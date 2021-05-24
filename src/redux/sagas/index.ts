@@ -13,6 +13,9 @@ import { subsSubsCategoriesWatcher } from './subSubCategoriesSaga';
 import { getBySlugSunCategoriesWatcher } from './getBySlugSubCategories';
 import { createOrderWatcher } from './createOrderSaga';
 import { ordersCategoriesWatcher } from './ordersSaga';
+import {deleteCategoryWatcher} from "./categories/delete";
+import {deleteSubCategoryWatcher} from "./subcaregories/delete";
+import {deleteSubSubCategoryWatcher} from "./subsubcategories/delete";
 
 export function* rootWatcher() {
     yield all([
@@ -28,6 +31,9 @@ export function* rootWatcher() {
         subsSubsCategoriesWatcher(),
         getBySlugSunCategoriesWatcher(),
         createOrderWatcher(),
-        ordersCategoriesWatcher()
+        ordersCategoriesWatcher(),
+        deleteCategoryWatcher(),
+        deleteSubCategoryWatcher(),
+        deleteSubSubCategoryWatcher()
     ]);
 }

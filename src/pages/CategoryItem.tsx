@@ -65,7 +65,7 @@ const CategoryItemComponent: React.FC<CategoryItemI> = ({category, location}) =>
                     <div className="categories_orders">
                         {orders_categories.map((item: any, key) => {
                             return (
-                                <div>
+                                <div key={key}>
                                     <h2>{item.title}</h2>
                                     <div>
                                         <OrdersSlider orders={item.orders}/> 

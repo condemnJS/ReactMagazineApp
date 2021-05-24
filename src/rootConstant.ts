@@ -1,1 +1,1 @@
-export const APP_API_URL = 'http://magazine.test/api';
+export const APP_API_URL = 'http://localhost/api';

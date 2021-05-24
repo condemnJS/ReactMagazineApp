@@ -1,15 +1,15 @@
 import axios from "axios";
 import {APP_API_URL} from "../rootConstant";
-import { Store } from "./Store";
+import {Store} from "./Store";
 
 // Получить только категории с их лимитом
 export async function requestGetCategories(limit: number) {
-    if(limit) {
+    if (limit) {
         return axios.request({
             method: 'get',
             url: APP_API_URL + `/categories?limit=${limit}`
         })
-    } 
+    }
     return axios.request({
         method: 'get',
         url: APP_API_URL + `/categories`
@@ -40,6 +40,7 @@ export async function requestGetSubCategories() {
         url: APP_API_URL + `/categories/childrens`
     })
 }
+
 // Получить конкретную категорию (подкатегории или подподкатегорию)
 export async function requestGetCategory(slug: string) {
     return axios.request({
@@ -54,7 +55,7 @@ export interface userDataI {
 }
 
 // Авторизация пользователя 
-export async function requestAuth(data:userDataI) {
+export async function requestAuth(data: userDataI) {
     return axios.request({
         method: 'post',
         url: APP_API_URL + '/login',
@@ -120,13 +121,14 @@ export async function requestSubSubCategoryCreate(data: any) {
 }
 
 // Получить подкатегории по слагу категории
-export async function requestGetSubCategoryBySlug (slug: string) {
+export async function requestGetSubCategoryBySlug(slug: string) {
     return axios.request({
         method: 'get',
         url: APP_API_URL + `/categories/` + slug + '/subcategories'
     })
 }
 
+// Запрос создания товара
 export async function requestCreateOrder(data: any) {
     return axios.request({
         method: 'post',
@@ -138,9 +140,40 @@ export async function requestCreateOrder(data: any) {
     })
 }
 
+// Запрос на получение товаров по категориями по слагу
 export async function requestGetOrdersWithSubSubCategory(slug: string) {
     return axios.request({
         method: 'get',
         url: APP_API_URL + '/order/' + slug
+    })
+}
+
+export async function requestDeleteCategories(id: string) {
+    return axios.request({
+        method: 'delete',
+        url: APP_API_URL + '/admin/category/' + id + '/delete',
+        headers: {
+            "Authorization": 'Bearer ' + Store.get('token'),
+        },
+    })
+}
+
+export async function requestDeleteSubCategories(id: string) {
+    return axios.request({
+        method: 'delete',
+        url: APP_API_URL + '/admin/subcategory/' + id + '/delete',
+        headers: {
+            "Authorization": 'Bearer ' + Store.get('token'),
+        },
+    })
+}
+
+export async function requestDeleteSubSubCategories(id: string) {
+    return axios.request({
+        method: 'delete',
+        url: APP_API_URL + '/admin/subsubcategory/' + id + '/delete',
+        headers: {
+            "Authorization": 'Bearer ' + Store.get('token'),
+        },
     })
 }
